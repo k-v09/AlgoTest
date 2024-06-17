@@ -1,0 +1,49 @@
+:root{
+  --ppurple: #d4a5d6;
+  --lppurple: #e6c6e9;
+  --ppink: #f7c8e0;
+  --lppink: #fce4ec;
+  --text: #4b3f72;
+
+  --gdark: #023E8A; /* (2, 62, 138) */
+  --gmed: #0077B6; /* (0, 119, 182) */
+  --glight: #90E0EF; /* (144, 224, 239) */
+  --gpale: #CAF0F8; /* (202, 240, 248) */
+}
+
+.heading {
+  width: 100%;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--lppink);
+  font-family: Arial, sans-serif;
+  width: 98vw;
+  height: 95vh;
+  align-items: center;
+}
+
+.title {
+  font-size: 56px;
+  color: var(--text);
+  text-align: center;
+}
+
+.chart-cont {
+  display: flex;
+  background-color: var(--ppurple);
+  width: 800px;
+  height: 600px;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.listBar {
+  display: inline-block;
+  margin: 2px;
+}
