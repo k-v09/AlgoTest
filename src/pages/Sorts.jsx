@@ -48,6 +48,7 @@ const rize = (arr) => {
 const Sorts = () => {
     let lis = [];
     const [ list, setList ] = useState(lis)
+    const [ isRandom, setRandom ] = useState(false)
     const shuffleList = () => {
         setList(rize(lis));
         const ccel = document.getElementById('cc');
@@ -57,6 +58,9 @@ const Sorts = () => {
             qt.id = `bar${kids}`; qt.className = "listBar"; qt.style.height = `${list[kids].height}px`; qt.style.width = `${list[kids].width}px`; qt.style.backgroundColor = list[kids].color;
             ccel.appendChild(qt);
         }
+    }
+    const toggleRandom = () => {
+        setRandom(!isRandom)
     }
     for (let i = 0; i < len; i++) {
         lis.push(new Bar(hmul * (i + 1) - 4));
@@ -68,7 +72,7 @@ const Sorts = () => {
             <div className="heading">
                 <h1 className="title">Sorting</h1>
             </div>
-            <div>
+            <div className="section-container">
                 <section className="chart-cont" id="cc">
                     {lis.map((bar, index) => (
                         <div
@@ -79,7 +83,7 @@ const Sorts = () => {
                         />
                     ))}
                 </section>
-                <button onClick={shuffleList}>Randomize!</button>
+                <button onClick={() => {shuffleList; toggleRandom}} className="sort-button" id="random">Randomize!</button>
             </div>
         </section>
     )

@@ -8,3 +8,5 @@ const rize = (arr) => {
     }
     return arr;
 }; console.log(rize(ls));
+
+export default rize;

@@ -41,9 +41,25 @@
   height: 600px;
   justify-content: space-around;
   align-items: flex-end;
+  border: 2px solid var(--text);
 }
 
 .listBar {
   display: inline-block;
   margin: 0;
+}
+
+.section-container {
+  display: flex;
+  background-color: var(--ppink);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.sort-button{
+  background-color: var(--lppurple);
+  border-radius: 10px;
+  margin: 10px;
+  height: fit-content;
+  border: 2px solid var(--ppurple);
 }
