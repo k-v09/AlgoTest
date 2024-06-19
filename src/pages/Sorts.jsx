@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import chroma from "chroma-js";
 import '../css/Home.css';
 
-const len = 50;
-const hmul = 12;
+const len = 200;
+const hmul = 3;
 const max_height = len * hmul;
 
 const colors = [
