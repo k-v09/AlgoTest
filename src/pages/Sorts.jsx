@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import chroma from "chroma-js";
 import '../css/Home.css';
+import bubbleSort from '../testing/bubble.js'
+//format bubble sort to output steps as well as sorted array
+
 
 const len = 200;
 const hmul = 3;
@@ -61,6 +64,17 @@ const Sorts = () => {
         }
         toggleRandom;
     }
+    const swapELs = (r1, r2) => {
+        let nl = list; [nl[r1], nl[r2]] = [nl[r2], nl[r1]];
+        setList(nl);
+        const ccel = document.getElementById('cc');
+        for (let kids = 0; kids < ccel.children.length; kids ++) {
+            ccel.children[0].remove();
+            let qt = document.createElement("div")
+            qt.id = `bar${kids}`; qt.className = "listBar"; qt.style.height = `${list[kids].height}px`; qt.style.width = `${list[kids].width}px`; qt.style.backgroundColor = list[kids].color;
+            ccel.appendChild(qt);
+        }
+    }
     const toggleRandom = () => {
         setRandom(!isRandom)
     }
@@ -96,6 +110,7 @@ const Sorts = () => {
                 </section>
                 <div id="daiv">
                     <button onClick={shuffleList} className="sort-button" id="random">Randomize!</button>
+                    <button onClick={swapELs} className="sort-button" id="sels">Swap!</button>
                     <button onClick={toggleDropdown} className="sort-button" id="dd">Sorts:</button>
                     {dropdownVisible && (
                         <div className="dropdown-menu">
