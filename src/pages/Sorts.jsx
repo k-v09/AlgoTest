@@ -49,6 +49,7 @@ const Sorts = () => {
     let lis = [];
     const [ list, setList ] = useState(lis)
     const [ isRandom, setRandom ] = useState(false)
+    const [ dropdownVisible, setDropdownVisible ] = useState(false)
     const shuffleList = () => {
         setList(rize(lis));
         const ccel = document.getElementById('cc');
@@ -58,9 +59,19 @@ const Sorts = () => {
             qt.id = `bar${kids}`; qt.className = "listBar"; qt.style.height = `${list[kids].height}px`; qt.style.width = `${list[kids].width}px`; qt.style.backgroundColor = list[kids].color;
             ccel.appendChild(qt);
         }
+        toggleRandom;
     }
     const toggleRandom = () => {
         setRandom(!isRandom)
+    }
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible)
+        const el = document.getElementById("dd");
+        if (!dropdownVisible) {
+            el.className = "sort-open"
+        }else {
+            el.className = "sort-button"
+        }
     }
     for (let i = 0; i < len; i++) {
         lis.push(new Bar(hmul * (i + 1) - 4));
@@ -83,7 +94,19 @@ const Sorts = () => {
                         />
                     ))}
                 </section>
-                <button onClick={() => {shuffleList; toggleRandom}} className="sort-button" id="random">Randomize!</button>
+                <div id="daiv">
+                    <button onClick={shuffleList} className="sort-button" id="random">Randomize!</button>
+                    <button onClick={toggleDropdown} className="sort-button" id="dd">Sorts:</button>
+                    {dropdownVisible && (
+                        <div className="dropdown-menu">
+                            <ul>
+                                <li><a onClick={() => {if(dropdownVisible){}}}>Bubble</a></li>
+                                <li><a onClick={() => {if(dropdownVisible){}}}>Merge</a></li>
+                                <li><a onClick={() => {if(dropdownVisible){}}}>Binary</a></li>
+                            </ul>
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     )

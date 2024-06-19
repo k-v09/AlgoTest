@@ -11,6 +11,7 @@ const bubbleSort = (array) => {
                 [array[j], array[j + 1]] = [array[j + 1], array[j]];
                 isSwapped = true;
             }
+            console.log(array)
         }
         if (!isSwapped) {
             break;
@@ -18,5 +19,7 @@ const bubbleSort = (array) => {
     }
     return array;
 }
+console.log(bubbleSort(ls));
+
 
 export default bubbleSort;

@@ -19,6 +19,7 @@ const quickSort = (arr, low, high) => {
         return;
     };
 	let pi = partition(arr, low, high);
+	console.log(arr);
 
 	quickSort(arr, low, pi - 1);
 	quickSort(arr, pi + 1, high);
