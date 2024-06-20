@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import chroma from "chroma-js";
 import '../css/Home.css';
-import bubbleSort from '../testing/bubble.js'
-//format bubble sort to output steps as well as sorted array
-
 
 const len = 200;
 const hmul = 3;
@@ -64,7 +61,8 @@ const Sorts = () => {
         }
         toggleRandom;
     }
-    const swapELs = (r1, r2) => {
+    const swapELs = () => {
+        let r1, r2; r1 = Math.floor(list.length * Math.random()); r2 = Math.floor(list.length * Math.random())
         let nl = list; [nl[r1], nl[r2]] = [nl[r2], nl[r1]];
         setList(nl);
         const ccel = document.getElementById('cc');
@@ -74,6 +72,34 @@ const Sorts = () => {
             qt.id = `bar${kids}`; qt.className = "listBar"; qt.style.height = `${list[kids].height}px`; qt.style.width = `${list[kids].width}px`; qt.style.backgroundColor = list[kids].color;
             ccel.appendChild(qt);
         }
+    }
+    const rebuildBars = (arr) => {
+        setList(arr);
+        const ccel = document.getElementById('cc');
+        for (let kids = 0; kids < ccel.children.length; kids ++) {
+            ccel.children[0].remove();
+            let qt = document.createElement("div")
+            qt.id = `bar${kids}`; qt.className = "listBar"; qt.style.height = `${list[kids].height}px`; qt.style.width = `${list[kids].width}px`; qt.style.backgroundColor = list[kids].color;
+            ccel.appendChild(qt);
+        }
+    }
+    const bubbleSort = (array) => {
+        const arrayLength = array.length;
+        let isSwapped;
+        for (let i = 0; i < arrayLength; i++) {
+            isSwapped = false;
+            for (let j = 0; j < arrayLength - i - 1; j++) {
+                if (array[j].index > array[j + 1].index) {
+                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                    isSwapped = true;
+                }
+                window.setTimeout(rebuildBars(array), 10);
+            }
+            if (!isSwapped) {
+                break;
+            }
+        }
+        rebuildBars(array);
     }
     const toggleRandom = () => {
         setRandom(!isRandom)
@@ -115,7 +141,7 @@ const Sorts = () => {
                     {dropdownVisible && (
                         <div className="dropdown-menu">
                             <ul>
-                                <li><a onClick={() => {if(dropdownVisible){}}}>Bubble</a></li>
+                                <li><a onClick={() => {if(dropdownVisible){bubbleSort(list)}}}>Bubble</a></li>
                                 <li><a onClick={() => {if(dropdownVisible){}}}>Merge</a></li>
                                 <li><a onClick={() => {if(dropdownVisible){}}}>Binary</a></li>
                             </ul>
